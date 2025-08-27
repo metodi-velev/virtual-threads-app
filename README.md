@@ -30,73 +30,80 @@ The example shows how virtual threads enable handling high numbers of concurrent
 
 A demonstration project showcasing the advantages of Java 21 Virtual Threads in a Spring Boot application with real REST API calls and database operations.
 
-Features
-Virtual Threads configuration for Spring Boot
+## Features
+- Virtual Threads configuration for Spring Boot
 
-Concurrent external API calls to JSONPlaceholder
+- Concurrent external API calls to JSONPlaceholder
 
-Database operations with simulated latency
+- Database operations with simulated latency
 
-Performance comparison between virtual threads and platform threads
+- Performance comparison between virtual threads and platform threads
 
-REST endpoints for testing and benchmarking
+- REST endpoints for testing and benchmarking
 
-Prerequisites
-Java 21 or later
+## Prerequisites
+- Java 21 or later
 
-Maven 3.6+
+- Maven 3.6+
 
-Internet connection (for external API calls)
+- Internet connection (for external API calls)
 
-Running the Application
-Clone and navigate to the project directory:
+## Running the Application
+1. Clone and navigate to the project directory:
 
 ```bash
    git clone <repository-url>
 ```
 ```
-cd virtual-threads-demo
+   cd virtual-threads-demo
 ```
-Build the project:
+2. Build the project:
 
 ```bash
    mvn clean package
 ```
-Run the application:
+3. Run the application:
 
 ```bash
    mvn spring-boot:run
 ```
 
-Access the application:
+4. Access the application:
 The application will start on http://localhost:8080
 
-Testing Endpoints
+## Testing Endpoints
 Once the application is running, you can test the following endpoints:
 
-Thread Statistics
-bash
-curl http://localhost:8080/stats
+### Thread Statistics
+```bash
+   curl http://localhost:8080/stats
+```
 Shows current thread usage and virtual threads support.
 
-Process Multiple Users Concurrently
-bash
-curl -X POST "http://localhost:8080/api/users/process-batch?count=50"
+### Process Multiple Users Concurrently
+```bash
+   curl -X POST "http://localhost:8080/api/users/process-batch?count=50"
+```
 Processes multiple users concurrently using virtual threads.
 
-Sequential API Calls Test
-bash
-curl "http://localhost:8080/api/sequential?count=30"
+### Sequential API Calls Test
+
+```bash
+   curl "http://localhost:8080/api/sequential?count=30"
+```
 Tests sequential API calls (baseline for comparison).
 
-Virtual Threads API Calls Test
-bash
+### Virtual Threads API Calls Test
+
+```bash
 curl "http://localhost:8080/api/virtual-threads?count=30"
+```
 Tests concurrent API calls using virtual threads.
 
-Performance Comparison
-bash
-curl "http://localhost:8080/benchmark/compare?requestCount=1000"
+### Performance Comparison
+```bash
+   curl "http://localhost:8080/benchmark/compare?requestCount=1000"
+```
 Compares performance between virtual threads and platform threads.
 
 ## Expected Results
