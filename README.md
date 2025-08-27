@@ -55,7 +55,7 @@ A demonstration project showcasing the advantages of Java 21 Virtual Threads in 
    git clone <repository-url>
 ```
 ```
-   cd virtual-threads-demo
+   cd virtual-threads-app
 ```
 2. Build the project:
 
@@ -201,17 +201,22 @@ Internet connection (for external API calls)
 Step-by-Step Execution
 Clone and navigate to the project directory:
 
-bash
-git clone <repository-url>
-cd virtual-threads-demo
+```bash
+   git clone <repository-url>
+```
+```bash
+   cd virtual-threads-app
+```
 Build the project:
 
-bash
-mvn clean package
+```bash
+   mvn clean package
+```
 Run the application:
 
-bash
-mvn spring-boot:run
+```bash
+   mvn spring-boot:run
+```
 Access the application:
 The application will start on http://localhost:8080
 
@@ -333,18 +338,20 @@ A comprehensive demonstration project showcasing the performance advantages of J
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/virtual-threads-demo.git
-   cd virtual-threads-demo
+   git clone https://github.com/your-username/virtual-threads-app.git
+   cd virtual-threads-app
    
-Build the project
+2. **Build the project**
 
-bash
-mvn clean package
-Run the application
+```bash
+   mvn clean package
+```
+3. **Run the application**
 
-bash
-mvn spring-boot:run
-Access the application at http://localhost:8080
+```bash
+   mvn spring-boot:run
+```
+4. **Access** the application at http://localhost:8080
 
 ## 📊 API Endpoints
 
