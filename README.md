@@ -1,8 +1,8 @@
-Running the Application
+## Running the Application
 Start the application:
-```sh
-mvn spring-boot:run
-```
+   ```bash
+      mvn spring-boot:run
+   ```
 Test endpoints:
 ````
 GET /stats - View thread statistics
@@ -51,21 +51,21 @@ Internet connection (for external API calls)
 Running the Application
 Clone and navigate to the project directory:
 
-```sh
-git clone <repository-url>
+```bash
+   git clone <repository-url>
 ```
 ```
 cd virtual-threads-demo
 ```
 Build the project:
 
-```sh
-mvn clean package
+```bash
+   mvn clean package
 ```
 Run the application:
 
-```sh
-mvn spring-boot:run
+```bash
+   mvn spring-boot:run
 ```
 
 Access the application:
@@ -99,29 +99,33 @@ bash
 curl "http://localhost:8080/benchmark/compare?requestCount=1000"
 Compares performance between virtual threads and platform threads.
 
-Expected Results
+## Expected Results
 When testing with virtual threads, you should observe:
 
-Significantly faster response times for I/O-bound operations
+- Significantly faster response times for I/O-bound operations
 
-Ability to handle thousands of concurrent requests with minimal memory overhead
+- Ability to handle thousands of concurrent requests with minimal memory overhead
 
-No thread pool exhaustion even under high load
+- No thread pool exhaustion even under high load
 
-Clean, synchronous-looking code that performs asynchronously
+- Clean, synchronous-looking code that performs asynchronously
 
-Configuration
-The application is configured to use virtual threads by default. Key configuration in application.properties:
+## Configuration
+The application is configured to use virtual threads by default. 
+Key configuration in `application.properties`:
 
-properties
-spring.threads.virtual.enabled=true
+```
+  spring.threads.virtual.enabled=true
+```
 External API endpoints are set to use JSONPlaceholder, a free fake API for testing:
 
-properties
+```
 external.api.user-service=https://jsonplaceholder.typicode.com/users
 external.api.post-service=https://jsonplaceholder.typicode.com/posts
 external.api.comment-service=https://jsonplaceholder.typicode.com/comments
-Monitoring
+```
+
+## Monitoring
 You can monitor the H2 database console at:
 
 text
@@ -145,18 +149,18 @@ src/main/java/com/example/vthreadsdemo/
 └── model/
 └── User.java                       # User entity
 ````
-Key Benefits Demonstrated
-High Concurrency: Handle thousands of simultaneous I/O operations
+## Key Benefits Demonstrated
+- High Concurrency: Handle thousands of simultaneous I/O operations
 
-Memory Efficiency: Minimal overhead compared to platform threads
+- Memory Efficiency: Minimal overhead compared to platform threads
 
-Simplified Code: No callback hell or complex reactive patterns
+- Simplified Code: No callback hell or complex reactive patterns
 
-Better Performance: Reduced response times for I/O-bound workloads
+- Better Performance: Reduced response times for I/O-bound workloads
 
-Backward Compatibility: Works with existing synchronous code
+- Backward Compatibility: Works with existing synchronous code
 
-Troubleshooting
+## Troubleshooting
 If you encounter issues:
 
 Ensure you're using Java 21 or later
@@ -165,10 +169,10 @@ Check your internet connection for external API calls
 
 Verify the H2 database console is accessible for monitoring
 
-License
+## License
 This project is for demonstration purposes.
 
-✨ Features
+## ✨ Features
 ✅ Virtual Threads configuration for Spring Boot
 
 ✅ Concurrent external API calls to JSONPlaceholder
@@ -230,8 +234,7 @@ Tests concurrent API calls using virtual threads.
 Performance Comparison
 
    ```bash
-   curl "http://localhost:8080/benchmark/compare?requestCount=1000"
-   cd virtual-threads-demo
+      curl "http://localhost:8080/benchmark/compare?requestCount=1000"
    ```
 Compares performance between virtual threads and platform threads.
 
@@ -270,24 +273,27 @@ Username: sa
 
 Password: leave blank
 
-💡 Key Benefits Demonstrated
-High Concurrency - Handle thousands of simultaneous I/O operations
+## 💡 Key Benefits Demonstrated
+- High Concurrency - Handle thousands of simultaneous I/O operations
 
-Memory Efficiency - Minimal overhead compared to platform threads
+- Memory Efficiency - Minimal overhead compared to platform threads
 
-Simplified Code - No callback hell or complex reactive patterns
+- Simplified Code - No callback hell or complex reactive patterns
 
-Better Performance - Reduced response times for I/O-bound workloads
+- Better Performance - Reduced response times for I/O-bound workloads
 
-Backward Compatibility - Works with existing synchronous code
+- Backward Compatibility - Works with existing synchronous code
 
-🛠️ Troubleshooting
-Issue	Solution
-Java version error	Ensure you're using Java 21+
-API call failures	Check internet connection
-Database connection issues	Verify H2 console accessibility
+## 🛠️ Troubleshooting
+
+| Issue                     | Solution                            |
+|---------------------------|-------------------------------------|
+| Java version error        | Ensure you're using Java 21+        |
+| API call failures         | Check whether app is up and running |
+| Database connection issues| Verify H2 console accessibility     |
+
 📄 License
-This project is for demonstration and educational purposes.
+This project is for **demonstration and educational purposes**.
 
 No, I mean, can you generate a README.md file with the content above? This file is rendered in github.
 markdown
@@ -377,7 +383,7 @@ Key configuration in src/main/resources/application.properties:
 
 properties
 ### Virtual Threads enabled
-spring.threads.virtual.enabled=true
+`spring.threads.virtual.enabled=true`
 
 ### External API endpoints (JSONPlaceholder)
 ```
