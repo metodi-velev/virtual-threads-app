@@ -1,30 +1,30 @@
 ## Running the Application
-Start the application:
+### 1. Start the application:
    ```bash
       mvn spring-boot:run
    ```
-Test endpoints:
-````
-GET /stats - View thread statistics
+### 2. Test endpoints:
 
-POST /api/users/process-batch?count=10 - Process multiple users concurrently
+- `GET /stats` - View thread statistics
 
-GET /api/sequential?count=10 - Test sequential API calls
+- `POST /api/users/process-batch?count=10` - Process multiple users concurrently
 
-GET /api/virtual-threads?count=10 - Test virtual threads API calls
+- `GET /api/sequential?count=10` - Test sequential API calls
 
-GET /benchmark/compare?requestCount=1000 - Compare performance
-````
-Key Advantages Demonstrated
-- Massive Concurrency: Handle thousands of concurrent I/O operations with minimal memory overhead
+- `GET /api/virtual-threads?count=10` - Test virtual threads API calls
 
-- Simplified Code: Write synchronous-looking code that performs asynchronously
+- `GET /benchmark/compare?requestCount=1000` - Compare performance
 
-- Better Resource Utilization: No need for complex reactive programming patterns
+## Key Advantages Demonstrated
+1. **Massive Concurrency:** Handle thousands of concurrent I/O operations with minimal memory overhead
 
-- Improved Performance: Significant reduction in response times for I/O-bound operations
+2.  **Simplified Code:** Write synchronous-looking code that performs asynchronously
 
-- Platform Thread Conservation: Avoid thread pool exhaustion with lightweight virtual threads
+3. **Better Resource Utilization:** No need for complex reactive programming patterns
+
+4. **Improved Performance:** Significant reduction in response times for I/O-bound operations
+
+5. **Platform Thread Conservation:** Avoid thread pool exhaustion with lightweight virtual threads
 
 The example shows how virtual threads enable handling high numbers of concurrent requests efficiently, making them ideal for microservices architectures with numerous external API calls.
 
