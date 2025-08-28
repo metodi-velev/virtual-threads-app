@@ -19,5 +19,9 @@ public class AddressEntity extends BaseEntity {
     @JoinColumn(name = "geo_id", referencedColumnName = "id")
     private GeoEntity geo;
 
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private UserEntity user;
+
     // getters and setters
 }

@@ -18,8 +18,7 @@ public class UserEntity extends BaseEntity {
     private String phone;
     private String website;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private AddressEntity address;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -27,5 +26,11 @@ public class UserEntity extends BaseEntity {
     private CompanyEntity company;
 
     // getters and setters
+    public void setAddress(AddressEntity address) {
+        this.address = address;
+        if (address != null) {
+            address.setUser(this);
+        }
+    }
 }
 
