@@ -2,9 +2,15 @@ package com.example.virtual_threads_demo.service;
 
 // UserService.java
 
+import com.example.virtual_threads_demo.dto.UserDto;
+import com.example.virtual_threads_demo.mapper.UserMapper;
 import com.example.virtual_threads_demo.model.User;
+import com.example.virtual_threads_demo.model.UserEntity;
+import com.example.virtual_threads_demo.repository.UserRepository;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -12,10 +18,13 @@ public class UserService {
 
     private final ExternalApiService apiService;
     private final DatabaseService databaseService;
+    private final UserRepository userRepository;
 
-    public UserService(ExternalApiService apiService, DatabaseService databaseService) {
+    public UserService(ExternalApiService apiService, DatabaseService databaseService,
+                       UserRepository userRepository) {
         this.apiService = apiService;
         this.databaseService = databaseService;
+        this.userRepository = userRepository;
     }
 
     @Async
@@ -51,5 +60,12 @@ public class UserService {
         // Simplified parsing - in real application, use proper JSON parsing
         return new User("User " + System.currentTimeMillis(),
                 "user@example.com", "Company");
+    }
+
+    public void save(List<UserDto> results) {
+        List<UserEntity> userEntities = results.stream()
+                .map(UserMapper::toEntity)
+                .toList();
+        userRepository.saveAll(userEntities);
     }
 }
