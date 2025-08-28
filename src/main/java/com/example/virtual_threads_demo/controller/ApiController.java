@@ -4,7 +4,6 @@ package com.example.virtual_threads_demo.controller;
 
 import com.example.virtual_threads_demo.dto.UserDto;
 import com.example.virtual_threads_demo.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +21,11 @@ class ApiController {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public ApiController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/api/sequential")
     public ResponseEntity<Map<String, Object>> sequentialCalls(@RequestParam int count) {
@@ -44,14 +46,7 @@ class ApiController {
         userService.save(resultsList);
 
         // Create response with timing info and results
-        Map<String, Object> response = new LinkedHashMap<>();
-        response.put("performance", Map.of(
-                "message", message,
-                "count", count,
-                "durationMs", duration,
-                "threadType", "sequential"
-        ));
-        response.put("users", resultsList);
+        Map<String, Object> response = getStringObjectMap(count, message, duration, resultsList, "sequential");
 
         return ResponseEntity.ok(response);
     }
@@ -86,15 +81,25 @@ class ApiController {
         userService.save(results);
 
         // Create response with timing info and results
+        Map<String, Object> response = getStringObjectMap(count, message, duration, results, "virtual");
+
+        return ResponseEntity.ok(response);
+    }
+
+    private Map<String, Object> getStringObjectMap(int count,
+                                                   String message,
+                                                   long duration,
+                                                   List<UserDto> resultsList,
+                                                   String threadType
+                                                   ) {
         Map<String, Object> response = new LinkedHashMap<>();
         response.put("performance", Map.of(
                 "message", message,
                 "count", count,
                 "durationMs", duration,
-                "threadType", "virtual"
+                "threadType", threadType
         ));
-        response.put("users", results);
-
-        return ResponseEntity.ok(response);
+        response.put("users", resultsList);
+        return response;
     }
 }
