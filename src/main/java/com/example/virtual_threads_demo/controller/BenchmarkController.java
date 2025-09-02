@@ -30,6 +30,7 @@ class BenchmarkController {
         result.append("Virtual Threads: ").append(vtDuration).append("ms\n");
         result.append("Platform Threads: ").append(ptDuration).append("ms\n");
         result.append("Improvement: ").append((ptDuration - vtDuration) * 100.0 / ptDuration).append("%\n");
+        result.append("Speedup: ").append(Math.round((ptDuration / (double) vtDuration))).append("x");
 
         return result.toString();
     }
